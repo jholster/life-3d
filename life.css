@@ -1,0 +1,236 @@
+@import url(http://fonts.googleapis.com/css?family=Orbitron:700);
+
+@-webkit-keyframes spin {
+    from {
+        -webkit-transform: rotateX(45deg) rotateZ(0deg);
+    }
+    to {
+        -webkit-transform: rotateX(45deg) rotateZ(360deg);
+    }
+}
+
+body {
+    margin: 0;
+    background: #1c1c1c;
+    font-family: Orbitron, sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #666;
+    text-shadow: 0 0 3px rgba(0, 0, 0, .5);
+    overflow: hidden;
+}
+
+header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	padding: 20px;
+	z-index: 10;
+	line-height: 1.25;
+}
+
+#controls {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 20px;
+	z-index: 10;
+}
+
+#controls .btn-group {
+	float: right;
+}
+
+#viewport {
+	position: relative;
+	z-index: 2;
+    -webkit-perspective: 800;
+}
+
+.shaded {
+	background: rgba(25, 25, 25, .75);
+}
+
+#cyclecount {
+	position: absolute;
+	bottom: 150px;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+	font-size: 64px;
+	margin: 50px auto;
+	text-align: center;
+	opacity: .65;
+}
+
+h1 {
+    font-size: 32px;
+    line-height: 1;
+}
+
+.hidden {
+	display: none;
+}
+
+.dynamic {
+    color: rgba(0, 255, 0, .5);        
+    text-shadow: 0 0 10px rgba(0, 255, 0, .5);
+}
+
+.grid {
+	position: relative;
+	z-index: 2;
+    margin: 0 auto;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transform: rotateX(45deg);
+    -webkit-animation: spin 30s linear infinite;        
+}
+
+.cell {
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin: 1px;
+    background: rgba(255, 255, 255, .05);
+    background: rgba(40, 40, 40, .6);
+    -webkit-transition: .25s;
+}
+
+.alive {
+    background: rgba(0, 255, 0, .5);
+    -webkit-box-shadow: 0 0 10px rgba(0, 255, 0, .5);
+    -webkit-transform: translateZ(20px);
+}
+
+.cell.dead:hover {
+    background: rgba(255, 255, 255, .15);
+}
+
+.cell.alive:hover {
+    background: rgba(0, 255, 0, 1);
+}
+
+.btn-group > * {
+	float: left;
+	-webkit-border-radius: 0;
+	border-right: 1px solid #333;
+}
+
+.btn-group > :first-child {
+	-webkit-border-radius: 10px 0 0 10px;
+}
+
+.btn-group > :last-child {
+	-webkit-border-radius: 0 10px 10px 0;
+}
+
+button {
+    margin: 0;
+    padding: 4px 0 2px 0;
+    width: 150px;
+    height: 58px;
+    border: 0;
+    background: -webkit-linear-gradient(top, #888, #444);
+    text-align: center;
+    color: #222;
+    font-size: 16px;
+    font-family: inherit;
+    text-transform: inherit;
+    text-align: center;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, .2);
+    cursor: pointer;
+    -webkit-appearance: none;
+    -webkit-border-radius: 10px;
+    -webkit-tansition: .5s;
+}
+
+button * {
+    pointer-events: none;
+}
+
+button span {
+	display: block;
+	font-size: 10px;
+	margin: 2px 0 0 0;
+}
+
+button:hover:not([disabled]) {
+    color: rgba(0, 255, 0, 1);
+    text-shadow: 0 0 10px rgba(0, 255, 0, 1);
+}
+
+button:active:not([disabled]),
+button.down:not([disabled]) {
+    background: -webkit-linear-gradient(top, #444, #666);
+    background: #666;
+    padding: 6px 48px 0 48px;    
+	color: rgba(0, 255, 0, 1);
+	text-shadow: 0 0 10px rgba(0, 255, 0, 1);
+}
+
+button[disabled] {
+	xbackground: #555;
+	color: #444;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, .1);
+}
+
+input[type="range"] {  
+    background: -webkit-linear-gradient(top, #1c1c1c, #333);
+    border: 1px solid #444;
+    cursor: pointer;
+	-webkit-appearance: none;  
+    -webkit-border-radius: 8px;
+}    
+
+input[type="range"]::-webkit-slider-thumb {
+	width: 32px;
+	height: 16px;
+    background: -webkit-linear-gradient(top, #aaa, #555);
+    -webkit-border-radius: 8px;
+    -webkit-appearance: none;
+}
+
+input[type="range"][disabled] {
+	opacity: .3;
+	cursor: auto;
+}
+
+input[type="range"][disabled]::-webkit-slider-thumb {
+    xbackground: -webkit-linear-gradient(top, #555, #333);
+}
+
+.param {
+	margin: 5px 0 0 0;
+	overflow: hidden;
+}
+
+.param > * {
+	margin: 0;
+	font-size: 16px;
+	line-height: 24px;
+	float: left;
+	display: block;
+}
+
+.param label {
+	width: 100px;
+	text-align: right;
+	padding: 0 16px 0 0;
+}
+
+.param input {
+	width: 120px;
+}
+
+.param div {
+	width: 100px;
+	text-transform: none;
+	padding: 0 0 0 16px;
+}
+
+#btn-start > * { display: none; }
+.running #btn-start .pause { display: block; }
+.stopped #btn-start .play { display: block; }
+.paused #btn-start .play { display: block; }
